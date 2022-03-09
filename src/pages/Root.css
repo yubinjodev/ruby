@@ -1,6 +1,7 @@
 :root {
   --backgroud-color: #ffff;
   --primary-color: #f57f6e;
+  --shadow-color: #979797;
 }
 
 .container {
@@ -10,10 +11,6 @@
   flex-direction: column;
   margin: 100px;
   width: 200px;
-}
-
-.header {
-  background-color: var(--primary-color);
 }
 
 /* Position and sizing of burger button */
@@ -84,11 +81,22 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.clientCard {
-  border: 1px solid black;
+.card {
   text-align: left;
   width: 300px;
   padding: 25px;
-  margin: 25px;
+  margin: 10px;
   border-radius: 30px;
+  box-shadow: 1px 1px 1px 1px var(--shadow-color);
+}
+
+.plus-icon {
+  height: 60px;
+  width: 60px;
+  position: fixed;
+}
+
+.client-icon {
+  height: 100px;
+  width: 100px;
 }

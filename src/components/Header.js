@@ -7,19 +7,17 @@ const Header = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <>
-      <Menu>
-        <a className="menu-item" href="/">
-          Home
-        </a>
-        <a className="menu-item" href="/sign-up">
-          Sign up
-        </a>
-        <a className="menu-item" href="/about-us">
-          About Us
-        </a>
-      </Menu>
-    </>
+    <Menu>
+      <a className="menu-item" href="/">
+        Home
+      </a>
+      <a className="menu-item" href="/sign-up">
+        Sign up
+      </a>
+      <a className="menu-item" href="/about-us">
+        About Us
+      </a>
+    </Menu>
   );
 };
 
