@@ -1,62 +1,42 @@
-import React from "react";
+import { useState, useEffect } from "react";
+
+const ClientList = (props) => {
+  <div className="card">
+    <div>{props.client.name}</div>
+    <div>{props.client.phone}</div>
+    <div>{props.client.registeredDate}</div>
+  </div>;
+};
 
 const ClientView = () => {
-  const clients = [
-    {
-      name: "Jane Doe",
-      phone: "010-1234-1234",
-      registeredDate: "Febuary 07, 2022",
-    },
-    {
-      name: "John Smith",
-      phone: "010-1234-1234",
-      registeredDate: "March 25, 2022",
-    },
-    {
-      name: "Alessandra Morley",
-      phone: "010-1234-1234",
-      registeredDate: "October 30, 2022",
-    },
-    {
-      name: "Lily-Ann Sweeney",
-      phone: "010-1234-1234",
-      registeredDate: "October 30, 2022",
-    },
-    {
-      name: "Jane Doe",
-      phone: "010-1234-1234",
-      registeredDate: "Febuary 07, 2022",
-    },
-    {
-      name: "John Smith",
-      phone: "010-1234-1234",
-      registeredDate: "March 25, 2022",
-    },
-    {
-      name: "Alessandra Morley",
-      phone: "010-1234-1234",
-      registeredDate: "October 30, 2022",
-    },
-    {
-      name: "Lily-Ann Sweeney",
-      phone: "010-1234-1234",
-      registeredDate: "October 30, 2022",
-    },
-  ];
+  const [clientList, setClientList] = useState([]);
 
-  return (
-    <>
-      {clients.map((client, index) => {
-        return (
-          <div key={index} className="card">
-            <div>{client.name}</div>
-            <div>{client.phone}</div>
-            <div>{client.registeredDate}</div>
-          </div>
-        );
-      })}
-    </>
-  );
+  // This method fetches the records from the database.
+  useEffect(() => {
+    const getClientList = async () => {
+      const response = await fetch(`http://localhost:5000/record/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const clientList = await response.json();
+      setClientList(clientList);
+    };
+
+    return;
+  }, [clientList.length]);
+
+  // This method will map out the records on the table
+  function clientMap() {
+    return clientList.map((client) => {
+      return <ClientList client={client} />;
+    });
+  }
+
+  return <div className="card">{clientMap()}</div>;
 };
 
 export default ClientView;

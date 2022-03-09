@@ -3,14 +3,14 @@ import Header from "./components/Header";
 import AboutUs from "./pages/About Us/AboutUs";
 import NewClient from "./pages/Dashboard/Client/NewClient";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import LoadingPage from "./pages/Loading Page/LoadingPage";
+import Login from "./pages/Login/Login";
 import Signup from "./pages/Sign up/Signup";
 
 const AllRoutes = [
   {
-    name: "Loading",
+    name: "Login",
     path: "/",
-    element: <LoadingPage />,
+    element: <Login />,
   },
   {
     name: "Sign up",

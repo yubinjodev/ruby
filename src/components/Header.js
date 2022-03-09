@@ -9,13 +9,7 @@ const Header = () => {
   return (
     <Menu>
       <a className="menu-item" href="/">
-        Home
-      </a>
-      <a className="menu-item" href="/sign-up">
-        Sign up
-      </a>
-      <a className="menu-item" href="/about-us">
-        About Us
+        Sign out
       </a>
     </Menu>
   );
