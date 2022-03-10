@@ -1,42 +1,31 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const ClientList = (props) => {
-  <div className="card">
-    <div>{props.client.name}</div>
-    <div>{props.client.phone}</div>
-    <div>{props.client.registeredDate}</div>
-  </div>;
-};
+import React from "react";
 
 const ClientView = () => {
   const [clientList, setClientList] = useState([]);
 
-  // This method fetches the records from the database.
   useEffect(() => {
-    const getClientList = async () => {
-      const response = await fetch(`http://localhost:5000/record/`);
-
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-
-      const clientList = await response.json();
+    axios.get(`http://localhost:8000/client/all`).then((res) => {
+      const clientList = res.data;
       setClientList(clientList);
-    };
-
-    return;
+    });
   }, [clientList.length]);
 
-  // This method will map out the records on the table
-  function clientMap() {
-    return clientList.map((client) => {
-      return <ClientList client={client} />;
-    });
-  }
-
-  return <div className="card">{clientMap()}</div>;
+  return (
+    <>
+      {clientList.map((client, index) => {
+        return (
+          <div className="card" key={client._id}>
+            <div>{client.name}</div>
+            <div>{client.phone}</div>
+            <div>{client.registeredDate}</div>
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 export default ClientView;

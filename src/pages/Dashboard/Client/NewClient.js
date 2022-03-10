@@ -29,7 +29,6 @@ const NewClient = () => {
     e.preventDefault();
     // When a post request is sent to the create url, we'll add a new record to the database.
     const client = { ...clientForm };
-    console.log(clientForm);
     await fetch("http://localhost:8000/client/new", {
       method: "POST",
       headers: {
