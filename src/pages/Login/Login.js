@@ -10,7 +10,7 @@ const Login = () => {
       <h1>Login</h1>
       <input placeholder="Email" />
       <input placeholder="Password" type="password" />
-      <button>Login</button>
+      <button onClick={() => navigate("/dashboard")}>Login</button>
       <div onClick={() => navigate("/sign-up")}>
         Don't have an account yet? Sign up here
       </div>

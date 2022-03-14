@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/Logo.png";
 import "../Root.css";
 
-const Profile = ({ setSignUp }) => {
+const Profile = ({ setCurrentForm }) => {
   const navigate = useNavigate();
   return (
     <>
-      <div onClick={() => setSignUp()}>go back to sign up</div>
+      <div onClick={() => setCurrentForm()}>go back to sign up</div>
       <form className="container">
         <img src={Logo} alt="Logo" />
         <h1>Profile</h1>

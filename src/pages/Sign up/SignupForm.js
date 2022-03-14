@@ -1,21 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 import Logo from "../../assets/images/Logo.png";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 import "../Root.css";
 
-const SignupForm = ({ setSignUp }) => {
+const SignupForm = ({ setCurrentForm }) => {
+  const navigate = useNavigate();
+
   const [signupForm, setSignUpForm] = useState({
     email: "",
     password: "",
   });
 
   const { email, password } = signupForm;
-
-  const auth = getAuth();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -30,19 +29,26 @@ const SignupForm = ({ setSignUp }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    toast.success("Signed up!");
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-        toast.success("dsf");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+    setSignUpForm({
+      email: "",
+      password: "",
+    });
+
+    setCurrentForm();
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     // ...
+    //     toast.success("dsf");
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ..
+    //   });
   };
 
   return (

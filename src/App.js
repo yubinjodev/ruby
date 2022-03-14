@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import AboutUs from "./pages/About Us/AboutUs";
+import ClientDetail from "./pages/Dashboard/Client/ClientDetail";
 import NewClient from "./pages/Dashboard/Client/NewClient";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
@@ -31,6 +32,11 @@ const AllRoutes = [
     name: "Register Client",
     path: "/client/new",
     element: <NewClient />,
+  },
+  {
+    name: "Client Detail",
+    path: "dashboard/client/:id",
+    element: <ClientDetail />,
   },
 ];
 

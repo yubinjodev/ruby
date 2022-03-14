@@ -4,24 +4,25 @@ import SignupForm from "./SignupForm";
 import ProfileForm from "./ProfileForm";
 
 const Signup = () => {
-  const [signUp, setSignUp] = useState(false);
-  console.log(signUp);
+  const [currentForm, setCurrentForm] = useState("signUp");
 
   useEffect(() => {
-    const item = localStorage.getItem("signUp");
-    item && JSON.parse(item) ? setSignUp(true) : setSignUp(false);
+    const item = localStorage.getItem("currentForm");
+    item && JSON.parse(item)
+      ? setCurrentForm("signUp")
+      : setCurrentForm("profile");
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("signUp", signUp);
-  }, [signUp]);
+    localStorage.setItem("currentForm", currentForm);
+  }, [currentForm]);
 
   return (
     <>
-      {signUp ? (
-        <ProfileForm setSignUp={() => setSignUp(false)} />
+      {currentForm === "signUp" ? (
+        <SignupForm setCurrentForm={() => setCurrentForm("profile")} />
       ) : (
-        <SignupForm setSignUp={() => setSignUp(true)} />
+        <ProfileForm setCurrentForm={() => setCurrentForm("signUp")} />
       )}
     </>
   );
